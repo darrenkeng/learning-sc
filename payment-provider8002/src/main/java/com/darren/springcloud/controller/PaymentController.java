@@ -6,8 +6,11 @@ import com.darren.springcloud.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -25,6 +28,9 @@ public class PaymentController {
 
     @Value("${server.port}")
     private String serverPort;
+
+    @Autowired
+    private DiscoveryClient discoveryClient;
 
     @PostMapping(value = "payment/create")
     public CommonResult create(@RequestBody Payment payment) {
@@ -44,6 +50,18 @@ public class PaymentController {
         } else {
             return new CommonResult(500, "error", null);
         }
+    }
+
+    @GetMapping(value = "payment/discoveryClient")
+    public CommonResult discoveryClient() {
+        List<String> services = discoveryClient.getServices();
+        services.forEach((t) -> {
+            log.info(t);
+
+            List<ServiceInstance> instances = discoveryClient.getInstances(t);
+            instances.forEach((i) -> log.info(i.getInstanceId() + "\t" + i.getUri()));
+        });
+        return new CommonResult(200, "success", discoveryClient);
     }
 
 }
