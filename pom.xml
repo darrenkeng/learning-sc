@@ -12,6 +12,7 @@
   <modules>
     <module>payment-provider8001</module>
     <module>order-consumer80</module>
+    <module>api-commons</module>
   </modules>
 
   <!-- 统一版本管理 -->
