@@ -13,6 +13,8 @@
     <module>payment-provider8001</module>
     <module>order-consumer80</module>
     <module>api-commons</module>
+    <module>eureka-server7001</module>
+    <module>eureka-server7002</module>
   </modules>
 
   <!-- 统一版本管理 -->
