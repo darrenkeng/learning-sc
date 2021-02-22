@@ -1,0 +1,45 @@
+package com.darren.springcloud.controller;
+
+import com.darren.springcloud.entities.CommonResult;
+import com.darren.springcloud.entities.Payment;
+import com.darren.springcloud.service.PaymentService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Objects;
+
+/**
+ * @description:
+ * @author: darren
+ * @company: wonhigh
+ * @create: 2021-02-22
+ */
+@RestController
+@Slf4j
+public class PaymentController {
+
+    @Autowired
+    private PaymentService paymentService;
+
+    @PostMapping(value = "payment/create")
+    public CommonResult create(@RequestBody Payment payment) {
+        int result = paymentService.createPayment(payment);
+        if (result > 0) {
+            return new CommonResult(200, "success", result);
+        } else {
+            return new CommonResult(500, "error", null);
+        }
+    }
+
+    @GetMapping(value = "payment/get/{id}")
+    public CommonResult getPaymentById(@PathVariable("id") Long id) {
+        Payment payment = paymentService.getPaymentById(id);
+        if (Objects.nonNull(payment)) {
+            return new CommonResult(200, "success", payment);
+        } else {
+            return new CommonResult(500, "error", null);
+        }
+    }
+
+}
