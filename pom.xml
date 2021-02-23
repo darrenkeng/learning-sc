@@ -19,6 +19,7 @@
     <module>order-consumer-openfeign80</module>
     <module>payment-provider-hystrix8011</module>
     <module>order-consumer-openfeign-hystrix80</module>
+    <module>hystrix-dashboard9001</module>
   </modules>
 
   <!-- 统一版本管理 -->
