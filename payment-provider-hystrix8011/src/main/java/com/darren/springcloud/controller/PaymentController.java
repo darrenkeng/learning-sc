@@ -85,4 +85,10 @@ public class PaymentController {
         return new CommonResult(200, "success", paymentService.paymentInfoTimeout());
     }
 
+    // =========服务熔断
+    @GetMapping(value = "payment/circuit/{id}")
+    public CommonResult getPaymentCircuitById(@PathVariable("id") Long id) {
+        return new CommonResult(200, "success" + serverPort, paymentService.paymentCircuitBreaker(id));
+    }
+
 }
