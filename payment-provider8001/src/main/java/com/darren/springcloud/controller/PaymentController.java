@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @description:
@@ -62,6 +63,16 @@ public class PaymentController {
             instances.forEach((i) -> log.info(i.getInstanceId() + "\t" + i.getUri()));
         });
         return new CommonResult(200, "success", discoveryClient);
+    }
+
+    @GetMapping(value = "payment/openfeign/timeout")
+    public CommonResult feignTimeout() {
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return new CommonResult(200, "success", null);
     }
 
 }
