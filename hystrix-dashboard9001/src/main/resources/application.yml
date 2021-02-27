@@ -8,3 +8,17 @@ spring:
 hystrix:
   dashboard:
     proxy-stream-allow-list: "*"
+
+turbine:
+  app-config: payment-provider-hystrix
+  cluster-name-expression: "'default'"
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:7001/eureka/,
+  instance:
+    # instance-id: payment-provider
+    prefer-ip-address: true
