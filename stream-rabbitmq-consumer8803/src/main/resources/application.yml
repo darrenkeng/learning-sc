@@ -1,0 +1,36 @@
+server:
+  port: 8803
+
+spring:
+  application:
+    name: stream-rabbitmq-consumer
+  cloud:
+    stream:
+      binders:
+        scRabbit:
+          type: rabbit
+          environment:
+            spring:
+              rabbitmq:
+                addresses: localhost
+                port: 5672
+                username: guest
+                password: guest
+      bindings:
+        input:
+          destination: scExchange
+          content-type: application/json
+          binder: scRabbit
+          group: stream-consumer
+
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/
+      #defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/
+  instance:
+    # instance-id: payment-provider
+    prefer-ip-address: true
