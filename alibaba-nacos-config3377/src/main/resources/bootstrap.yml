@@ -12,3 +12,12 @@ spring:
         file-extension: yaml
         group: DEV_GROUP
         namespace: member
+        shared-configs:
+          - data-id: common.yaml
+            group: GLOBLE_GROUP
+            namespace: member
+            refresh: true
+          - data-id: log.yaml
+            group: GLOBLE_GROUP
+            namespace: member
+            refresh: true

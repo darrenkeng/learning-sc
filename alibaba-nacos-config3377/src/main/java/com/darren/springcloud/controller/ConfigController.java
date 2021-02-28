@@ -18,8 +18,14 @@ public class ConfigController {
     @Value("${config.info}")
     private String info;
 
+    @Value("${common}")
+    private String common;
+
+    @Value("${log}")
+    private String log;
+
     @GetMapping("info")
     public String info(){
-        return info;
+        return info + "\t" + common + "\t" + log;
     }
 }
