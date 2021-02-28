@@ -1,0 +1,36 @@
+server:
+  port: 3344
+
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: git@github.com:darrenkeng/sc-config.git
+          search-paths: sc-config
+      label: master
+  rabbitmq:
+    addresses: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/
+      #defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/
+  instance:
+    # instance-id: payment-provider
+    prefer-ip-address: true
+# 暴露 bus refresh
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "bus-refresh"
