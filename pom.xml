@@ -33,6 +33,8 @@
     <module>alibaba-order-consumer90</module>
     <module>alibaba-nacos-config3377</module>
     <module>alibaba-sentinel-service8401</module>
+    <module>alibaba-sentinel-consumer91</module>
+    <module>alibaba-sentinel-feign-consumer92</module>
   </modules>
 
   <!-- 统一版本管理 -->
