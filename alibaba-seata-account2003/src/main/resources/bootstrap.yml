@@ -1,0 +1,16 @@
+server:
+  port: 2003
+spring:
+  application:
+    name: alibaba-seata-account
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        group: SEATA_GROUP
+        namespace: member
+      config:
+        server-addr: localhost:8848
+        file-extension: yaml
+        group: SEATA_GROUP
+        namespace: member
