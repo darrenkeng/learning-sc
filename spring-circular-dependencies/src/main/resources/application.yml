@@ -1,0 +1,6 @@
+server:
+  port: 6009
+
+spring:
+  application:
+    name: spring-circular-dependencies

@@ -38,6 +38,7 @@
     <module>alibaba-seata-order2001</module>
     <module>alibaba-seata-storage2002</module>
     <module>alibaba-seata-account2003</module>
+      <module>spring-circular-dependencies</module>
   </modules>
 
   <!-- 统一版本管理 -->
